@@ -1,0 +1,9 @@
+true or true;
+(false);
+and true;
+false;
+(or);
+((true));
+(false);
+(true;
+true);
