@@ -1,0 +1,89 @@
+package fes.aragon.token;
+%%
+%public
+%class Lexico
+%line
+%char
+%column
+%full
+%type Tokens
+%{
+private boolean hayToken=false;
+public boolean getHayToken(){
+	return this.hayToken;
+}
+%}
+%type Tokens
+%init{
+	/*Codigo que se ejecuta en el constructor de la clase*/
+%init}
+%eof{
+	/*Codigo que se ejecuta al terminar el analisis*/
+	this.hayToken=false;
+%eof}
+Espacio= " "
+TRUE="true"
+FALSE="false"
+AND="and"
+OR="or"
+NOT="not"
+PARABERTURA="("
+PARCIERRE=")"
+PuntoComa=";"
+saltoLinea= \n|\r
+
+%%
+{TRUE} {
+	Tokens tok=new Tokens(yytext(),Sym.TRUE,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+{FALSE} {
+	Tokens tok=new Tokens(yytext(),Sym.FALSE,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+{AND} {
+	Tokens tok=new Tokens(yytext(),Sym.AND,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+
+{OR} {
+	Tokens tok=new Tokens(yytext(),Sym.OR,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+{NOT} {
+	Tokens tok=new Tokens(yytext(),Sym.NOT,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+{PARABERTURA} {
+	Tokens tok=new Tokens(yytext(),Sym.PARABERTURA,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+{PARCIERRE} {
+	Tokens tok=new Tokens(yytext(),Sym.PARCIERRE,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+
+{PuntoComa} {
+	Tokens tok=new Tokens(yytext(),Sym.PUNTOCOMA,yyline,yycolumn);
+	this.hayToken=true;
+	return tok;
+}
+{saltoLinea} {
+
+}
+{Espacio} {
+	
+}
+. {
+        String errLex = "Error léxico : '"+yytext()+"' en la línea: "
+		+(yyline+1)+" y columna: "+(yycolumn+1);
+        System.out.println(errLex);
+	this.hayToken=false;
+}
