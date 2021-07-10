@@ -1,0 +1,25 @@
+inicio 50 50
+arriba
+mover 2
+abajo
+mover
+mover
+mover
+derecha
+mover
+izquierda
+mover
+derecha 
+mover
+abajo
+mover 
+abajo
+mover
+abajo
+mover
+abajo
+mover
+mover
+mover
+derecha
+mover 4
